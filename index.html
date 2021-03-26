@@ -1,1 +1,125 @@
-Hello World
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>健康通行证</title> 
+</head>
+<body>
+
+<div class='div1'>
+	<div class='avatar'>
+		<img src="img/avatar.png" alt="" width=100% height=100%/>
+	</div>
+	<div class='content'>
+		<p class='item'>姓名 ：<span>张惟一</span></p>
+		<p class='item'>学号 ：<span>20204027119</span></p>
+		<p class='item'>学院 ：<span>工程学院</span></p>
+		<p class='item'>专业 ：<span>工业设计</span></p>
+		<p class='item'>班级 ：<span>工设20（1）</span></p>
+	</div>
+</div>
+
+<div style="white-space:nowrap;">
+	<div class="square"></div>
+	<div style="display:inline-block;">
+		<p style="font-size:4rem;">电子通行证<span style="color:#54a78d">（允许通行）</span></p>
+	</div>
+</div>
+
+<div class="div2">
+	<div class="qrcode">
+		<img src="img/qrcode.jpg" alt="" width=100% height=100%/>
+		<p align="middle">当前时间 ：<span id="datetime"></span></p>
+	</div>
+	<div style="width:45rem;white-space:nowrap;margin:0rem auto;border:1px solid gray;">
+		<div style="float:left;margin:3rem;display:inline-block;">
+			<p align="middle" style="margin:0.5rem;font-size:2.5rem">正常</p>
+			<p align="middle" style="margin:0.5rem;font-size:2.5rem;color:#a6ecd0">健康状况</p>
+		</div>
+		<div style="padding:3rem;border:1px solid #fff;border-top:0;border-right:0;border-bottom:0;display:inline-block">
+			<p align="middle" style="margin:0.5rem;font-size:2.5rem">36.3℃~37.3℃</p>
+			<p align="middle" style="margin:0.5rem;font-size:2.5rem;color:#a6ecd0">晨测体温</p>
+			<p align="middle" style="margin:0.5rem;font-size:2.5rem">36.3℃~37.3℃</p>
+			<p align="middle" style="margin:0.5rem;font-size:2.5rem;color:#a6ecd0">午测体温</p>
+		</div>
+	</div>
+</div>
+<style>
+@media screen and (min-width:800px){html{font-size:5px}}
+.div1 {
+	font-size: 3rem;
+	width: 100%;
+	white-space: nowrap;
+	border-radius:1.8rem;
+	box-shadow: 0rem 0rem 2.3rem #4a9dfd;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	padding: 4rem 4rem 4rem 7rem;
+	background-image: url(img/background.jpg);
+}
+.div2 {
+	font-size: 3rem;
+	color:#ffffff;
+	width: 100%;
+	border-radius:1.8rem;
+	box-shadow: 0rem 0rem 2rem #2db784;
+	background:#2db784;
+	padding: 7rem;
+}
+.avatar {
+	float:left;
+	width:15rem;
+	height:15rem;
+	margin-top:3rem;
+	display:inline-block;
+}
+.content {
+	padding:0rem 5rem 0rem 4rem;
+	display:inline-block;
+}
+.square {
+	float:left;
+	width:1.5rem;
+	height:5rem;
+	background:#2ab984;
+	margin-top:4rem;
+	margin-right:4rem;
+	display:inline-block;
+}
+.qrcode {
+	width:100%;
+	margin-left:4rem;
+	margin-right:4rem;
+}
+p {
+	font: sans-serif;
+}
+.item {
+	color: #a6d1fc;
+	text-shadow: 0rem 0rem 0.5rem #888888;
+}
+.item span {
+	color: #ffffff;
+	text-shadow: 0rem 0rem 0.5rem #888888;
+}
+
+</style>
+<script>
+	Date.prototype.format = function (fmt) {
+		var o = {
+			"y+": this.getFullYear, //年
+			"M+": this.getMonth() + 1, //月份
+			"d+": this.getDate(), //日
+			"h+": this.getHours(), //小时
+			"m+": this.getMinutes() //分
+		};
+		if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+		for (var k in o)
+			if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+		return fmt;
+	}
+	setInterval("document.getElementById('datetime').innerHTML = (new Date()).format('yyyy-MM-dd hh:mm');", 1000);
+</script>
+</body>
+</html>
